@@ -28,6 +28,9 @@ services:
     #   timeout: 10s
     #   retries: 5
     #   start_period: 40s
+    labels:
+      - traefik.http.middlewares.force-https.headers.customrequestheaders.X-Forwarded-Proto=https
+      - traefik.http.routers.https-0-rwgkw0gkc0swws80wg088oc4-strapi.middlewares=gzip,force-https
     deploy:
       resources:
         limits:
