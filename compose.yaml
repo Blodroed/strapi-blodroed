@@ -7,16 +7,11 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
-      DATABASE_CLIENT: ${DATABASE_CLIENT}
-      DATABASE_HOST: strapiDB
-      DATABASE_PORT: ${DATABASE_PORT}
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_CLIENT: sqlite
+      NODE_ENV: ${NODE_ENV}
       JWT_SECRET: ${JWT_SECRET}
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
       APP_KEYS: ${APP_KEYS}
-      NODE_ENV: ${NODE_ENV}
     volumes:
       - ./config:/opt/app/config
       - ./src:/opt/app/src
@@ -24,47 +19,17 @@ services:
       - ./yarn.lock:/opt/yarn.lock
       - ./.env:/opt/app/.env
       - ./public/uploads:/opt/app/public/uploads
+      - ./data:/opt/app/.tmp # Persist SQLite database file
     ports:
       - "1337:1337"
     networks:
       - strapi
-    depends_on:
-      - strapiDB
-
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:1337/_health" ]
       interval: 30s
       timeout: 10s
       retries: 5
       start_period: 40s
-
-  strapiDB:
-    container_name: strapiDB
-    platform: linux/amd64 #for platform error on Apple M1 chips
-    restart: unless-stopped
-    env_file: .env
-    image: postgres:16.0-alpine
-    environment:
-      POSTGRES_USER: ${DATABASE_USERNAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_NAME}
-    volumes:
-      - strapi-data:/var/lib/postgresql/data/ #using a volume
-      #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
-
-    ports:
-      - "5432:5432"
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $${DATABASE_USERNAME} -d $${DATABASE_NAME}"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 20s
-    networks:
-      - strapi
-
-volumes:
-  strapi-data:
 
 networks:
   strapi:
