@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_blog_content_texts",
+  "info": {
+    "displayName": "Content Text",
+    "icon": "file"
+  },
+  "options": {},
+  "attributes": {
+    "textBlock": {
+      "type": "richtext",
+      "required": true
+    }
+  },
+  "config": {}
+}

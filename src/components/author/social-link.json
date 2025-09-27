@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_author_social_links",
+  "info": {
+    "displayName": "Social Link",
+    "icon": "earth"
+  },
+  "options": {},
+  "attributes": {
+    "platform": {
+      "type": "enumeration",
+      "enum": ["Twitter", "Facebook", "LinkedIn", "Instagram", "Discord", "GitHub", "YouTube", "Other"],
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "default": "https://www.domain.com",
+      "maxLength": 100,
+      "required": true
+    }
+  },
+  "config": {}
+}

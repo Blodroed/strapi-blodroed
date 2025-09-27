@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "authors",
+  "info": {
+    "singularName": "author",
+    "pluralName": "authors",
+    "displayName": "Author"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "default": "Ola Nordmann",
+      "maxLength": 50,
+      "required": true
+    },
+    "ProfilePicture": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Bio": {
+      "type": "string",
+      "default": "A person with interesting interests",
+      "maxLength": 100
+    },
+    "eMail": {
+      "type": "email",
+      "maxLength": 50,
+      "unique": true
+    },
+    "Links": {
+      "type": "component",
+      "component": "author.social-link",
+      "repeatable": true
+    },
+    "blog_posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog-post.blog-post",
+      "mappedBy": "author"
+    }
+  }
+}
