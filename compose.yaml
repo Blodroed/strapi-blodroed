@@ -21,9 +21,9 @@ services:
     networks:
       - strapi
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:1337/_health" ]
+      test: ["CMD", "curl", "-f", "http://localhost:1337/health" ]
       interval: 30s
-      timeout: 10s
+      timeout: 3s
       retries: 5
       start_period: 40s
     labels:
