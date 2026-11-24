@@ -54,7 +54,7 @@ export interface BlogContentText extends Struct.ComponentSchema {
 }
 
 declare module '@strapi/strapi' {
-  export module Public {
+  export namespace Public {
     export interface ComponentSchemas {
       'author.social-link': AuthorSocialLink;
       'blog.content-image': BlogContentImage;

@@ -19,17 +19,17 @@
     "@strapi/plugin-users-permissions": "5.63.0",
     "@strapi/strapi": "5.63.0",
     "better-sqlite3": "13.2.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.30.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.6",
     "strapi-health-plugin": "^1.2.2",
     "styled-components": "^6.6.0"
   },
   "devDependencies": {
-    "@types/node": "^22.20.5",
-    "@types/react": "^18.3.31",
-    "@types/react-dom": "^18.3.7",
-    "typescript": "^5.9.3"
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2"
   },
   "engines": {
     "node": ">=22.0.0 <=26.x.x",
